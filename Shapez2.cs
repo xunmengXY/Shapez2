@@ -27,7 +27,7 @@ namespace Shapez2
         /// <remarks>
         /// If you wang to change PieceEachFloor independently, please use UnsafeSetPieceEachFloor(), CurrentMode follows suit.
         /// </remarks>
-        public static int PieceEachFloor 
+        public static int PieceEachFloor
         {
             get{ return _PieceEachFloor; } 
             private set{ _PieceEachFloor = value; }
@@ -630,6 +630,15 @@ namespace Shapez2
                 {
                     if (isSupported[i, j] == false && shapeArray[i, j].Type != Type.Empty)
                     {
+                        if (shapeArray[i, j].Type == Type.Crystal)
+                        {
+                            shapeArray[i, j] = Piece.EmptyPiece;
+                            isSupported = GetSupportedArray(shapeArray, maxFloor);
+                            if (IsAllSupported(shapeArray, maxFloor, isSupported))
+                                return shapeArray;
+                            continue;
+                        }
+                        
                         currentFallingGroup = [];
 
                         currentFallingGroup.Add(j);

@@ -15,6 +15,9 @@ class Test
         Console.WriteLine(Shape.Rotate(shape1));
         Shape.CurrentMode = GameMode.Quarter;
 
+        shape1 = "crcrcrcr:CuCuCuCu:cr------";
+        Console.WriteLine(Shape.Cut(shape1));
+
         shape1 = "CucrcrCu:CuCucrcr:----CuCu";
         shape2 = "CucgCucg";
         Console.WriteLine(Shape.Cut(shape1, shape2, Variant.Cut.Swap));
